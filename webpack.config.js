@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin =require('html-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const webpack =require('webpack')
 module.exports={
   mode: process.env.NODE_ENV+'' != 'loc' ? 'production' : 'development',
@@ -19,11 +20,13 @@ module.exports={
   },
    
   plugins:[
+    // 生成 dist 文件夹前先 清除 原有dist
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: 'body', // 将资源 （如 js ）注入到 body 中
       // chunksSortMode: 'manual',
       // excludeChunks:['common.js','index'],
-      filename: './index.html', // 输出文件
+      // filename: './index.html', // 输出文件
       showErrors: true, // 将错误信息输出到页面
       // W_ENV: process.env.NODE_ENV,
       // publicPath: pkgJson.config['' + process.env.NODE_ENV].publicPath,
@@ -39,7 +42,8 @@ module.exports={
     }),
   ],
   output:{
-    filename:'[name].bundle.js',
+    // filename:'[name].bundle.js',
+    filename:'[name].[chunkhash].js',
     path:path.resolve(__dirname,'dist')
   },
   module:{
