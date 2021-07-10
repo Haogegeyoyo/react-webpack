@@ -60,10 +60,23 @@ module.exports={
       {
         test:/\.(js|jsx)$/,
         include: path.resolve(__dirname, "src"),
-        loader:'babel-loader',
-        exclude: /(node_modules)/
-      },
-
+        // loader:'babel-loader',
+        exclude: /(node_modules)/,
+        use: {
+          // loader 是 babel
+          loader: 'babel-loader',
+          options: {
+              // babel 转义的配置选项
+            babelrc: false,
+            presets: [
+            // 添加 preset-react
+            require.resolve('@babel/preset-react'),
+            [require.resolve('@babel/preset-env'), {modules: false}]
+            ],
+            cacheDirectory: true
+              },
+            }
+          }
       // {
       //   // 加载图片
       //   test:/\.(png|svg|jpg|gif)$/,

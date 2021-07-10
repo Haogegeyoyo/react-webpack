@@ -1,11 +1,18 @@
-function component() {
-  var element = document.createElement('div');
-
-  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-  return element;
+import React,{Component} from 'react'
+import ReactDom from 'react-dom'
+class HomePage extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      hello:"hello world"
+    }
+  }
+  componentDidMount(){
+    console.log("hello world ")
+  }
+  render(){
+    return <div>{this.state.hello}</div>
+  }
 }
-console.log(process.env.NODE_ENV,"打包的变量")
 
-document.body.appendChild(component());
+ReactDom.render(<HomePage></HomePage>,document.getElementById('app'))
