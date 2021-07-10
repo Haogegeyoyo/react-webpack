@@ -52,9 +52,18 @@ module.exports={
          test:/\.(css|less)$/,
          use:[
            'style-loader',
-           'css-loader'
+           'css-loader',
+          // 'postcss-loader',
+            'less-loader'
          ]
       },
+      {
+        test:/\.(js|jsx)$/,
+        include: path.resolve(__dirname, "src"),
+        loader:'babel-loader',
+        exclude: /(node_modules)/
+      },
+
       // {
       //   // 加载图片
       //   test:/\.(png|svg|jpg|gif)$/,
