@@ -92,6 +92,18 @@ module.exports={
       // }
      
     ],
-  }
+  },
+  // 配置快捷路径
+  resolve: {
+    extensions: ['.web.js', '.js', '.jsx', '.json', '.css', '.less'],
+    modules: ['node_modules', path.join(__dirname, 'src')],
+    alias: {
+      'widget': path.join(__dirname, 'src/widget'),
+      'utils': path.join(__dirname, 'src/utils'),
+      'config': path.join(__dirname, 'src/config'),
+      'assets': path.join(__dirname, 'src/assets'),
+    
+      }
+  },
   
 }
