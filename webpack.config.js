@@ -53,8 +53,17 @@ module.exports={
          use:[
            'style-loader',
            'css-loader',
-          // 'postcss-loader',
-            'less-loader'
+          //  'postcss-loader',
+           'less-loader',
+           {
+             loader:'px2vw-view-loader',
+             options:{
+               viewportWidth: 750, // 设计稿宽度，单位为像素
+               viewportUnit: 'vw', // 转换单位
+               minPixelValue:1, //最小转换单体，例如minPixelValue:1，则1px及以下不进行转换
+               decimal:3 // 转换后保留的小数位数
+             }
+            },
          ]
       },
       {
@@ -93,6 +102,7 @@ module.exports={
      
     ],
   },
+
   // 配置快捷路径
   resolve: {
     extensions: ['.web.js', '.js', '.jsx', '.json', '.css', '.less'],

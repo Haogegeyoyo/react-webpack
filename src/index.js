@@ -1,6 +1,7 @@
 import React,{Component} from 'react'
 import ReactDom from 'react-dom'
 import * as  utils  from "utils/index"
+import './index.less'
 class HomePage extends Component{
   constructor(props){
     super(props)
@@ -13,7 +14,7 @@ class HomePage extends Component{
     utils.first()
   }
   render(){
-    return <div>{this.state.hello}</div>
+    return <div className="hello-world">{this.state.hello}</div>
   }
 }
 
