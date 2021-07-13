@@ -12,3 +12,4 @@
 ## 更新日志
     07/13 
           `import_antd_mobile 分支，webpack 配置了 按需加载，不需要单独引入样式，但是 出现了 less-loader 版本不匹配的问题，所以将 less-loader 版本从 7.x 降到了 5.x`
+          `router-set` 分支，使用 react-router-dom 进行了路由配置，新增路由可到 router 文件夹下 index 文件新增，若 路由过多时，可在 router 新增其他文件，并汇总到 index 文件

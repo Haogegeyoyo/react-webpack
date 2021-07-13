@@ -113,7 +113,7 @@ module.exports={
       'utils': path.join(__dirname, 'src/utils'),
       'config': path.join(__dirname, 'src/config'),
       'assets': path.join(__dirname, 'src/assets'),
-    
+      "@":path.join(__dirname, 'src')
       }
   },
   
