@@ -54,7 +54,8 @@ module.exports={
            'style-loader',
            'css-loader',
           //  'postcss-loader',
-           'less-loader',
+          //  'less-loader',
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
            {
              loader:'px2vw-view-loader',
              options:{
@@ -69,10 +70,8 @@ module.exports={
       {
         test:/\.(js|jsx)$/,
         include: path.resolve(__dirname, "src"),
-        // loader:'babel-loader',
         exclude: /(node_modules)/,
         use: {
-          // loader 是 babel
           loader: 'babel-loader',
           options: {
               // babel 转义的配置选项
@@ -82,6 +81,8 @@ module.exports={
             require.resolve('@babel/preset-react'),
             [require.resolve('@babel/preset-env'), {modules: false}]
             ],
+            // 配置 antd-mobile 按需 引入，同时也会引入样式
+            plugins: [ ["import", { libraryName: "antd-mobile", style: true }]], //`style: true` 会加载 less 文件
             cacheDirectory: true
               },
             }
